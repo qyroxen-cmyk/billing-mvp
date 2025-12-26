@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="toggle-btn" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <a href="index.html"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+  <a href="products.html" class="active"><i class="fas fa-box"></i><span>Products</span></a>
+  <a href="customers.html"><i class="fas fa-users"></i><span>Customers</span></a>
+  <a href="invoices.html"><i class="fas fa-file-invoice"></i><span>Invoices</span></a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <h2>Products</h2>
+    <button class="primary-btn" onclick="toggleForm()">
+  <i class="fas fa-plus"></i> Add Product
+</button>
+  </div>
+
+  <!-- PRODUCT FORM -->
+  <div class="product-form" id="productForm">
+    <h3>Add Product</h3>
+
+    <div class="form-grid">
+      <input id="name" placeholder="Item Name">
+      <input id="code" placeholder="Item Code">
+      <input id="category" placeholder="Category">
+      <input id="stock" type="number" placeholder="Current Stock">
+      <input id="lowStock" type="number" placeholder="Low Stock Quantity">
+      <input id="salePrice" type="number" placeholder="Sales Price">
+      <input id="purchasePrice" type="number" placeholder="Purchase Price">
+      <input id="hsn" placeholder="HSN Code">
+      <input id="gst" type="number" placeholder="GST %">
+
+      <textarea id="description" placeholder="Item Description"></textarea>
+
+      <div class="form-actions">
+        <button onclick="saveProduct()">Save Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT TABLE -->
+  <div class="table-wrapper">
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Code</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Sale Price</th>
+        </tr>
+      </thead>
+      <tbody id="productTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="js/auth.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/products.js"></script>
+
+</body>
+</html>

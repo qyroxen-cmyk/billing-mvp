@@ -1,0 +1,143 @@
+/* Base shared styles (no page-specific rules) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+  background: #f4f6fb;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  width: 240px;
+  height: 100vh;
+  background: #0f172a;
+  padding: 20px;
+  color: white;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: #cbd5f5;
+  text-decoration: none;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.sidebar.collapsed span {
+  display: none;
+}
+
+.toggle-btn {
+  cursor: pointer;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* MAIN */
+.main {
+  margin-left: 240px;
+  padding: 30px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed ~ .main {
+  margin-left: 70px;
+}
+
+/* COMMON CARD */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ---------- TOP NAVBAR ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 14px 20px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.nav-left h2 {
+  font-size: 20px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #334155;
+}
+
+.profile i {
+  font-size: 22px;
+  color: #2563eb;
+}
+
+.logout-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* ==============================
+   PRIMARY BUTTON (GLOBAL)
+   ============================== */
+.primary-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Billing MVP</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body class="login-body">
+
+<div class="login-card">
+  <h2 id="title">Welcome Back</h2>
+  <p class="sub" id="subtitle">Login to your account</p>
+
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="submitForm()" id="actionBtn">Login</button>
+
+  <p class="switch">
+    <span id="switchText">New here?</span>
+    <a href="#" onclick="toggleMode()">Create Account</a>
+  </p>
+
+  <p class="error" id="error"></p>
+</div>
+
+<script src="js/login.anim.js"></script>
+
+<script>
+let isSignup = false;
+
+function toggleMode() {
+  isSignup = !isSignup;
+
+  document.getElementById("title").innerText =
+    isSignup ? "Create Account" : "Welcome Back";
+
+  document.getElementById("subtitle").innerText =
+    isSignup ? "Create a new business account" : "Login to your account";
+
+  document.getElementById("actionBtn").innerText =
+    isSignup ? "Create Account" : "Login";
+
+  document.getElementById("switchText").innerText =
+    isSignup ? "Already have an account?" : "New here?";
+
+  document.getElementById("error").innerText = "";
+}
+
+async function submitForm() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+
+  error.innerText = "";
+
+  if (!email || !password) {
+    error.innerText = "All fields are required";
+    return;
+  }
+
+  const url = isSignup ? "/signup" : "/login";
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    error.innerText = data.error || "Something went wrong";
+    return;
+  }
+
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("role", data.role);
+  localStorage.setItem("email", email);
+
+  window.location.href = "index.html";
+}
+
+// Prevent logged-in users from seeing login
+if (localStorage.getItem("token")) {
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

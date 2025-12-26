@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoices</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/invoices.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="toggle-btn" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <a href="index.html"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+  <a href="products.html"><i class="fas fa-box"></i><span>Products</span></a>
+  <a href="customers.html"><i class="fas fa-users"></i><span>Customers</span></a>
+  <a href="invoices.html"><i class="fas fa-file-invoice"></i><span>Invoices</span></a>
+</div>
+
+<div class="main">
+  <div class="navbar">
+    <div class="nav-left">
+      <h2>Billing MVP</h2>
+    </div>
+
+    <div class="nav-right">
+      <div class="profile">
+        <i class="fas fa-user-circle"></i>
+        <div>
+          <div id="profileEmail">user@email.com</div>
+          <small id="profileRole">OWNER</small>
+        </div>
+      </div>
+
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <h1>Create Invoice</h1>
+
+  <!-- INVOICE FORM -->
+  <div class="card">
+    <div class="invoice-form">
+      <input id="customer" placeholder="Customer Name">
+      <select id="product"></select>
+      <input id="qty" type="number" placeholder="Quantity">
+      <button onclick="addItem()">Add Item</button>
+    </div>
+
+    <table id="invoiceTable">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>GST</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3 id="grandTotal">Grand Total: ₹0</h3>
+
+    <button class="primary" onclick="saveInvoice()">Save Invoice</button>
+  </div>
+
+  <!-- INVOICE LIST -->
+  <div class="card">
+    <h3>Invoices</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="invoiceBody"></tbody>
+    </table>
+  </div>
+</div>
+<script src="js/auth.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/invoices.js"></script>
+<script src="js/invoices.anim.js"></script>
+
+<script>
+  loadProfile();
+</script>
+
+</body>
+</html>

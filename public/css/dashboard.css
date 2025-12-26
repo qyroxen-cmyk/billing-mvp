@@ -1,0 +1,55 @@
+.page-title {
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* KPI GRID */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* KPI CARDS */
+.kpi {
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(0,0,0,0.05));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.kpi:hover::after {
+  opacity: 1;
+}
+
+.kpi h3 {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.kpi p {
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* GRAPH */
+.graph-card {
+  margin-top: 35px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
